@@ -1,0 +1,23 @@
+name: demo
+
+python_env:
+  dependencies:
+    - mlflow==2.21.1
+
+targets:
+  gpu:
+    python_env:
+      dependencies:
+        - qiskit==1.3.2
+        - qiskit-aer-gpu==0.15.1
+  cpu:
+    python_env:
+      dependencies:
+        - qiskit==2.2.3
+        - qiskit-aer==0.17.2
+
+docker:
+  username: qubernetes-dev
+  registry: ghcr.io
+
+kubeconfig: config.vlad.yaml
