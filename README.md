@@ -21,7 +21,7 @@ pip install -r requirements-dev.txt
 
 ### Initializing the project
 
-Initialize the Q8S project:
+Initialize the project:
 
 ```bash
 q8sctl init --images
@@ -40,7 +40,7 @@ To execute workloads that have images in GitHub Container Registry (GHCR), you n
 To execute workloads in your Qubernetes cluster, use the following command:
 
 ```bash
-q8sctl execute --registry_pat YOUR_GHCR_PAT --target cpu /src/workloads/sample_workload.py
+q8sctl execute --registry-pat YOUR_GHCR_PAT --target cpu /src/workloads/sample_workload.py
 ```
 
 ## Execute workloads from Jupyter Lab notebooks
@@ -54,7 +54,7 @@ pip install jupyter
 To execute workloads from notebooks, start Jupyter Lab with the following command:
 
 ```bash
-q8sctl jupyter --registry_pat YOUR_GHCR_PAT --target cpu --install
+q8sctl jupyter --registry-pat YOUR_GHCR_PAT --target cpu --install
 ```
 
 Open the `notebook.ipynb` file in Jupyter Lab. Select the kernel `Q8s kernel`.
