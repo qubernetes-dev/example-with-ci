@@ -68,7 +68,7 @@ jobs:
       - name: Install Q8S CLI
         run: python -m pip install -r requirements-dev.txt
 
-      - name: Build and push cpu images
+      - name: Prepare Q8S buildx cache and bake files
         run: q8sctl init
 
       - name: Build images with bake
