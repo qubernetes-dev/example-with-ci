@@ -75,5 +75,4 @@ jobs:
         uses: docker/bake-action@v6
         with:
           workdir: .q8s_cache/
-          source: docker-bake.json
           push: true
