@@ -71,9 +71,12 @@ jobs:
       - name: Build and push cpu images
         run: q8sctl init
 
+      - name: Print bakefile
+        run: cat .q8s_cache/docker-bake.json
+
       - name: Build images with bake
         uses: docker/bake-action@v6
         with:
           workdir: .q8s_cache/
-          source: docker-bake.json
+          source: "."
           push: true
