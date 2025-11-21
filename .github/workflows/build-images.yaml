@@ -69,7 +69,10 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
 
       - name: Build and push cpu images
-        run: q8sctl build --init --target cpu
+        run: q8sctl init
 
-      - name: Build and push gpu images
-        run: q8sctl build --init --target gpu
+      - name: Build images with bake
+        uses: docker/bake-action@v6
+        with:
+          source: .q8s_cache/
+          push: true
