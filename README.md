@@ -19,6 +19,12 @@ Install the `q8sctl` command-line tool:
 pip install -r requirements-dev.txt
 ```
 
+install pre-commit hooks:
+
+```bash
+pre-commit install --hook-type post-checkout
+```
+
 ### Initializing the project
 
 Initialize the project:

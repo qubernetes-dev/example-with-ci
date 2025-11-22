@@ -1,1 +1,2 @@
-q8s==0.11.0-dev0
+pre-commit
+q8s>=0.11.0
