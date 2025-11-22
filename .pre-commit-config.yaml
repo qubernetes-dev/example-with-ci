@@ -1,0 +1,8 @@
+repos:
+  - repo: https://github.com/qubernetes-dev/q8s-kernel
+    rev: v0.11.0
+    hooks:
+      - id: q8sctl
+        stages: [post-checkout]
+        args: ["init", "--images"]
+        always_run: true
