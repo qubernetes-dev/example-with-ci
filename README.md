@@ -46,7 +46,7 @@ To execute workloads that have images in GitHub Container Registry (GHCR), you n
 To execute workloads in your Qubernetes cluster, use the following command:
 
 ```bash
-q8sctl execute --registry-pat YOUR_GHCR_PAT --target cpu /src/workloads/sample_workload.py
+q8sctl execute --registry-pat YOUR_GHCR_PAT --target cpu src/workloads/sample_workload.py
 ```
 
 ## Execute workloads from Jupyter Lab notebooks
