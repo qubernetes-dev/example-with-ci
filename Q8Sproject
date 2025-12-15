@@ -1,6 +1,7 @@
 name: demo
 
 python_env:
+  python_version: "3.12"
   dependencies:
     - mlflow==2.21.1
 
