@@ -11,6 +11,7 @@ targets:
       dependencies:
         - qiskit==1.3.2
         - qiskit-aer-gpu==0.15.1
+        - nvidia-ml-py>=13.590.44
   cpu:
     python_env:
       dependencies:
