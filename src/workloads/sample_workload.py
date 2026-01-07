@@ -7,7 +7,7 @@ import pynvml
 logger = logging.getLogger(__name__)
 
 
-def demo_function(shotsAmount=1000, device="CPU"):
+def demo_function(shotsAmount=1000, device="GPU"):
     simulator = AerSimulator(method="statevector", device=device)
 
     circuit = QuantumCircuit(2, 2)
@@ -25,10 +25,12 @@ def demo_function(shotsAmount=1000, device="CPU"):
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
+
     pynvml.nvmlInit()
-    output = demo_function()
+    output = demo_function(2000)
     print("Simulation result:", output)
     print(f"Driver Version: {pynvml.nvmlSystemGetDriverVersion()}")
+    print(f"CUDA Version: {pynvml.nvmlSystemGetCudaDriverVersion()}")
     deviceCount = pynvml.nvmlDeviceGetCount()
     print(f"Number of GPUs: {deviceCount}")
     for i in range(deviceCount):
@@ -39,4 +41,5 @@ if __name__ == "__main__":
         print(f"  Total memory: {info.total / 1024 ** 2} MB")
         print(f"  Used memory: {info.used / 1024 ** 2} MB")
         print(f"  Free memory: {info.free / 1024 ** 2} MB")
+        print(f"  Utilization: {pynvml.nvmlDeviceGetUtilizationRates(handle).gpu} %")
     pynvml.nvmlShutdown()
