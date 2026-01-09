@@ -2,11 +2,12 @@ import logging
 
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
-import pynvml
+from workloads.q8s_runtime import cuda_info
 
 logger = logging.getLogger(__name__)
 
 
+@cuda_info
 def demo_function(shotsAmount=1000, device="GPU"):
     simulator = AerSimulator(method="statevector", device=device)
 
@@ -24,22 +25,7 @@ def demo_function(shotsAmount=1000, device="GPU"):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
 
-    pynvml.nvmlInit()
     output = demo_function(2000)
     print("Simulation result:", output)
-    print(f"Driver Version: {pynvml.nvmlSystemGetDriverVersion()}")
-    print(f"CUDA Version: {pynvml.nvmlSystemGetCudaDriverVersion()}")
-    deviceCount = pynvml.nvmlDeviceGetCount()
-    print(f"Number of GPUs: {deviceCount}")
-    for i in range(deviceCount):
-        handle = pynvml.nvmlDeviceGetHandleByIndex(i)
-        name = pynvml.nvmlDeviceGetName(handle)
-        print(f"GPU {i}: {name}")
-        info = pynvml.nvmlDeviceGetMemoryInfo(handle)
-        print(f"  Total memory: {info.total / 1024 ** 2} MB")
-        print(f"  Used memory: {info.used / 1024 ** 2} MB")
-        print(f"  Free memory: {info.free / 1024 ** 2} MB")
-        print(f"  Utilization: {pynvml.nvmlDeviceGetUtilizationRates(handle).gpu} %")
-    pynvml.nvmlShutdown()
